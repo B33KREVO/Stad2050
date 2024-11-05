@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68e05f27a6929064dabcd0fef2314aae
+guid: 685ed041e9cb6c9459dc1fed082f9cbe
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rond raam achter|CylinderAction
-      takeName: rond raam achter|CylinderAction
-      internalID: 701843153191367465
-      firstFrame: 0
-      lastFrame: 0.94
+      name: Pomp 1
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 1
+      lastFrame: 97
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,13 +60,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: rond raam achter|CylinderAction.001
-      takeName: rond raam achter|CylinderAction.001
-      internalID: -1946501913659550037
-      firstFrame: 0
-      lastFrame: 0
+      name: Pomp 2
+      takeName: Scene
+      internalID: -8800838248204228948
+      firstFrame: 36
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -89,13 +89,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: rond raam achter glas|CylinderAction
-      takeName: rond raam achter glas|CylinderAction
-      internalID: 7916062436350891446
-      firstFrame: 0
-      lastFrame: 0
+      name: idle
+      takeName: Scene
+      internalID: 723096430288179899
+      firstFrame: 1
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,13 +118,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: rond raam achter glas|CylinderAction.001
-      takeName: rond raam achter glas|CylinderAction.001
-      internalID: -3586182871491334219
-      firstFrame: 0
-      lastFrame: 0
+      name: Pomp 3
+      takeName: Scene
+      internalID: 1963079803359675471
+      firstFrame: 36
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -147,7 +147,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
