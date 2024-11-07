@@ -5,11 +5,12 @@ using UnityEngine.Video;
 
 public class afstandbediening : MonoBehaviour
 {
+    public tv tv;
     public VideoPlayer videoPlayer;
 
     void Start()
     {
-        
+        videoPlayer = tv.GetComponent<VideoPlayer>();
     }
 
     // Update is called once per frame
