@@ -1075,7 +1075,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8bf27806498b14db60a3c20a21eec2, type: 3}
-<<<<<<< HEAD
 --- !u!1 &293745656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4237530767371831047, guid: 4c4b2b0935db72a45a61b3a6e86d95bf, type: 3}
@@ -1102,7 +1101,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6576953, y: 0.9399943, z: 0.69950277}
   m_Center: {x: -0.0004618466, y: 0.46638146, z: 0.007545054}
-=======
 --- !u!1001 &298127027
 PrefabInstance:
   m_ObjectHideFlags: 0
