@@ -1,9 +1,3 @@
-/* 
- * PLAYER MOVE
- * Moves the Player object according to key inputs.
- * Crouching and jumping are optional
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +8,12 @@ public class PlayerMove : MonoBehaviour
     public float walkingSpeed = 3.0f;
 
     public bool jumpEnabled;
-
     public float jumpSpeed = 1.0f;
+
     public bool crouchEnabled;
     public float crouchHeight = 0.4f;
     private float normalHeight;
+
     public KeyCode forwardKey = KeyCode.W;
     public KeyCode backKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
@@ -26,10 +21,14 @@ public class PlayerMove : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode crouchKey = KeyCode.LeftControl;
 
+    // Animator
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         normalHeight = transform.localScale.y;
+        animator = GetComponent<Animator>();  // Haal de Animator op
     }
 
     void FixedUpdate()
@@ -63,45 +62,62 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Jumping
-        if (jumpEnabled && Input.GetKey(jumpKey) && isGrounded()) 
+        if (jumpEnabled && Input.GetKey(jumpKey) && isGrounded())
         {
             movement += transform.up * jumpSpeed;
         }
 
-        // make sure the rigidbody isn't sliding around when there's no input
-        if (!hasInput) {
-          rb.constraints = 
-            RigidbodyConstraints.FreezePositionX | 
-            RigidbodyConstraints.FreezePositionZ |
-            RigidbodyConstraints.FreezeRotationY |
-            RigidbodyConstraints.FreezeRotationZ;
-        } else {
-          rb.constraints = 
-            RigidbodyConstraints.FreezeRotationY |
-            RigidbodyConstraints.FreezeRotationZ;
+        // Update animatie op basis van beweging
+        UpdateAnimation(hasInput);
+
+        // Make sure the rigidbody isn't sliding around when there's no input
+        if (!hasInput)
+        {
+            rb.constraints =
+                RigidbodyConstraints.FreezePositionX |
+                RigidbodyConstraints.FreezePositionZ |
+                RigidbodyConstraints.FreezeRotationY |
+                RigidbodyConstraints.FreezeRotationZ;
+        }
+        else
+        {
+            rb.constraints =
+                RigidbodyConstraints.FreezeRotationY |
+                RigidbodyConstraints.FreezeRotationZ;
         }
 
-        // maintain vertical speed
+        // Maintain vertical speed
         movement.y += rb.velocity.y;
 
-        // apply movement to rigidbody
-        rb.velocity = movement ;
+        // Apply movement to rigidbody
+        rb.velocity = movement;
     }
 
-    
-
-    void Update() {
-        if (crouchEnabled && Input.GetKeyDown(crouchKey)) {
-          // Crouching
-          transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
-        } else if (crouchEnabled && Input.GetKeyUp(crouchKey)) {
-          // Not crouching
-          transform.localScale = new Vector3(transform.localScale.x, normalHeight, transform.localScale.z);
+    void Update()
+    {
+        if (crouchEnabled && Input.GetKeyDown(crouchKey))
+        {
+            // Crouching
+            transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
+        }
+        else if (crouchEnabled && Input.GetKeyUp(crouchKey))
+        {
+            // Not crouching
+            transform.localScale = new Vector3(transform.localScale.x, normalHeight, transform.localScale.z);
         }
     }
 
     // Check if player is on the ground
-    bool isGrounded() {
-      return Physics.Raycast(transform.position, -Vector3.up, 0.1f + transform.localScale.y);
+    bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, 0.1f + transform.localScale.y);
+    }
+
+    // Update de animatie (zet 'isMoving' parameter)
+    void UpdateAnimation(bool hasInput)
+    {
+        // Controleer of er beweging is en werk de 'isMoving' parameter bij
+        bool isMoving = hasInput && isGrounded();  // Beweging en op de grond
+        animator.SetBool("isMoving", isMoving);    // Zet de animatieparameter
     }
 }
