@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class intBuurman : MonoBehaviour
 {
-    public Text text;  // Make sure this is assigned in the Unity Editor
-    public AudioClip HintFX;
+    public Text text;  // Text component to show the message
 
     void Start()
     {
         text.enabled = false;  // Make sure the text is initially hidden
+        Read();  // Automatically show the text when the game starts
     }
 
     public void Read()
@@ -22,7 +22,7 @@ public class intBuurman : MonoBehaviour
 
     IEnumerator TextFade()
     {
-        yield return new WaitForSeconds(5);
-        text.enabled = false;
+        yield return new WaitForSeconds(5);  // Wait for 5 seconds
+        text.enabled = false;  // Hide the text after 5 seconds
     }
 }

@@ -9,27 +9,47 @@ public class HotbarManager : MonoBehaviour
     public Transform playerTransform;  // Reference to the player's Transform
     public float pickupRange = 5f;  // Pickup range set to 5 units
 
-    // Reference to the intBuurman script
-    public intBuurman buurmanScript;
-
     private void Start()
     {
         items = new InventoryItem[3];
+
+        // Zorg ervoor dat de speler-transform is toegewezen.
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+            }
+            else
+            {
+                Debug.LogError("Player object not found. Please ensure the player object has the 'Player' tag.");
+            }
+        }
+
+        // Zorg ervoor dat hotbarSlots niet null is en dat ze correct zijn toegewezen
+        if (hotbarSlots == null || hotbarSlots.Length == 0)
+        {
+            Debug.LogError("Hotbar slots are not assigned. Please assign the UI slots in the Inspector.");
+        }
     }
 
     private void Update()
     {
-        // Picking up items with the E key
-        if (Input.GetKeyDown(KeyCode.E))  
+        // Alleen interactie met items als speler en slots goed zijn ingesteld
+        if (playerTransform != null && hotbarSlots.Length > 0)
         {
-            TryPickUpItem();
-            TryInteractWithBuurman();
-        }
+            // Picking up items with the E key
+            if (Input.GetKeyDown(KeyCode.E))  
+            {
+                TryPickUpItem();
+            }
 
-        // Dropping the last picked item with the Q key
-        if (Input.GetKeyDown(KeyCode.Q))  
-        {
-            DropItem();
+            // Dropping the last picked item with the Q key
+            if (Input.GetKeyDown(KeyCode.Q))  
+            {
+                DropItem();
+            }
         }
     }
 
@@ -40,8 +60,14 @@ public class HotbarManager : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = newItem;
-                hotbarSlots[i].sprite = newItem.itemIcon;
-                hotbarSlots[i].enabled = true;
+
+                // Zorg ervoor dat je het slot bijwerkt met het item-icoon
+                if (i < hotbarSlots.Length)
+                {
+                    hotbarSlots[i].sprite = newItem.itemIcon;
+                    hotbarSlots[i].enabled = true;
+                }
+
                 selectedItemIndex = i;  // Update the selected item index
                 break;
             }
@@ -50,6 +76,7 @@ public class HotbarManager : MonoBehaviour
 
     private void TryPickUpItem()
     {
+        // Check voor colliders in een bepaald bereik van de speler
         Collider[] hitColliders = Physics.OverlapSphere(playerTransform.position, pickupRange);
         Debug.Log("Checking for items in range...");
 
@@ -60,22 +87,8 @@ public class HotbarManager : MonoBehaviour
             {
                 Debug.Log("Item found: " + itemToPickUp.item.itemName);
                 AddItemToHotbar(itemToPickUp.item);
-                Destroy(itemToPickUp.gameObject);  // Remove the item from the scene
-                break;  // Only pick up one item at a time
-            }
-        }
-    }
-
-    private void TryInteractWithBuurman()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(playerTransform.position, pickupRange);
-        foreach (Collider collider in hitColliders)
-        {
-            intBuurman buurman = collider.GetComponent<intBuurman>();
-            if (buurman != null)
-            {
-                buurman.Read();  // Trigger the interaction method in the intBuurman script
-                break;
+                Destroy(itemToPickUp.gameObject);  // Verwijder het item uit de scene
+                break;  // Pick only one item at a time
             }
         }
     }
