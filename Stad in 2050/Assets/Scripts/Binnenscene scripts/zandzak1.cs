@@ -7,14 +7,13 @@ public class zandzak1 : MonoBehaviour
     AudioSource audio;
 
     public AudioClip pickup;
-    void Start()
-    {
+    void Start() {
         audio = GetComponent<AudioSource>();
     }
 
     public void oppakken()
     {
          gameObject.SetActive(false);
-         audio.playOneShot(pickup);
+         audio.PlayOneShot(pickup);
     }
 }

@@ -5,11 +5,14 @@ using UnityEngine.Video;
 
 public class afstandbediening : MonoBehaviour
 {
+    AudioSource audio;
     public tv tv;
     public VideoPlayer videoPlayer;
+    public AudioClip tvgeluid;
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         videoPlayer = tv.GetComponent<VideoPlayer>();
     }
 
@@ -17,5 +20,6 @@ public class afstandbediening : MonoBehaviour
     public void tvaan()
     {
         videoPlayer.Play();
+        audio.PlayOneShot(tvgeluid);
     }
 }
