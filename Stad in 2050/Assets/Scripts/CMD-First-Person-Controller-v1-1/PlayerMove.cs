@@ -1,19 +1,22 @@
+/* 
+ * PLAYER MOVE
+ * Moves the Player object according to key inputs.
+ * Crouching and jumping are optional
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
     public float walkingSpeed = 3.0f;
-
+    public float jumpSpeed = 5.0f; // Updated for better jumping
     public bool jumpEnabled;
-    public float jumpSpeed = 1.0f;
-
     public bool crouchEnabled;
     public float crouchHeight = 0.4f;
     private float normalHeight;
-
     public KeyCode forwardKey = KeyCode.W;
     public KeyCode backKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
@@ -21,76 +24,54 @@ public class PlayerMove : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode crouchKey = KeyCode.LeftControl;
 
-    // Animator
-    private Animator animator;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         normalHeight = transform.localScale.y;
-        animator = GetComponent<Animator>();  // Haal de Animator op
+        rb.freezeRotation = true; // Prevents unintended rotations
     }
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3();
+        Vector3 movement = Vector3.zero;
         bool hasInput = false;
 
         // Walking
         if (Input.GetKey(forwardKey))
         {
-            movement += transform.forward * walkingSpeed;
+            movement += transform.forward;
             hasInput = true;
         }
-
         if (Input.GetKey(backKey))
         {
-            movement += -transform.forward * walkingSpeed;
+            movement += -transform.forward;
             hasInput = true;
         }
-
         if (Input.GetKey(rightKey))
         {
-            movement += transform.right * walkingSpeed;
+            movement += transform.right;
+            hasInput = true;
+        }
+        if (Input.GetKey(leftKey))
+        {
+            movement += -transform.right;
             hasInput = true;
         }
 
-        if (Input.GetKey(leftKey))
+        // Normalize to maintain consistent speed in diagonal movement
+        if (hasInput)
         {
-            movement += -transform.right * walkingSpeed;
-            hasInput = true;
+            movement = movement.normalized * walkingSpeed;
         }
 
         // Jumping
         if (jumpEnabled && Input.GetKey(jumpKey) && isGrounded())
         {
-            movement += transform.up * jumpSpeed;
+            rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
         }
-
-        // Update animatie op basis van beweging
-        UpdateAnimation(hasInput);
-
-        // Make sure the rigidbody isn't sliding around when there's no input
-        if (!hasInput)
-        {
-            rb.constraints =
-                RigidbodyConstraints.FreezePositionX |
-                RigidbodyConstraints.FreezePositionZ |
-                RigidbodyConstraints.FreezeRotationY |
-                RigidbodyConstraints.FreezeRotationZ;
-        }
-        else
-        {
-            rb.constraints =
-                RigidbodyConstraints.FreezeRotationY |
-                RigidbodyConstraints.FreezeRotationZ;
-        }
-
-        // Maintain vertical speed
-        movement.y += rb.velocity.y;
 
         // Apply movement to rigidbody
-        rb.velocity = movement;
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
     }
 
     void Update()
@@ -111,13 +92,5 @@ public class PlayerMove : MonoBehaviour
     bool isGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, 0.1f + transform.localScale.y);
-    }
-
-    // Update de animatie (zet 'isMoving' parameter)
-    void UpdateAnimation(bool hasInput)
-    {
-        // Controleer of er beweging is en werk de 'isMoving' parameter bij
-        bool isMoving = hasInput && isGrounded();  // Beweging en op de grond
-        animator.SetBool("isMoving", isMoving);    // Zet de animatieparameter
     }
 }
