@@ -5,7 +5,8 @@ using TMPro;
 public class escape : MonoBehaviour
 {
     public animatiepomp pomp;
-    public TextMeshProUGUI textescape;  // Using TextMeshProUGUI type for UI text
+    public Speler speler;
+    public TMP_Text text; 
 
     void Start()
     {
@@ -15,8 +16,8 @@ public class escape : MonoBehaviour
     // Update is called once per frame
     public void Ontsnap() 
     {
-        if (pomp.aantalPompjes) {
-            textescape.gameObject.SetActive(true);  // Set the text escape UI element active
-        }
+
+        text.text = "Congratulations you succesfully evacuated!";
+        text.enabled = true;
     }
 }
