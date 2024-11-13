@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class doekweg : MonoBehaviour
 {
-    public animatiepomp animatiePompScript;
-    public bool doekIsWeg = false; // Zorg dat doekIsWeg hier gedefinieerd is
-    public BoxCollider boxcollider;
+    public bool doekIsWeg = false; 
     public MeshRenderer meshrenderer;
+    public Speler speler;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +15,6 @@ public class doekweg : MonoBehaviour
     }
 
     public void doekGone() {
-        boxcollider.enabled = false;
         meshrenderer.enabled = false;
         doekIsWeg = true; // Zet doekIsWeg op true
     }
