@@ -1,21 +1,33 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MissionDisplay : MonoBehaviour
 {
-    public GameObject missionBox;          // Assign your UI background image here
-    public TextMeshProUGUI missionText;     // Assign your TextMeshPro component here
+    public GameObject missionBox;              // Assign your UI background image here
+    public TextMeshProUGUI missionText;         // Assign your TextMeshPro component here
+    public Image crosshair;                     // Crosshair image in the UI
+    public Sprite defaultCrosshair;             // Default crosshair sprite
+    public Sprite hoverCrosshair;               // Hover crosshair sprite for when near mission object
+
     private bool isNearMissionTrigger = false;
     private string currentMissionText;
 
-    // Detect when the player enters a collider with a specific tag
+    private void Start()
+    {
+        // Set the crosshair to the default sprite at the start
+        crosshair.sprite = defaultCrosshair;
+        missionBox.SetActive(false);           // Hide the mission box initially
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Mission"))
         {
             isNearMissionTrigger = true;
-            MissionTrigger missionTrigger = other.GetComponent<MissionTrigger>();
+            crosshair.sprite = hoverCrosshair; // Change to hover crosshair when near a mission object
 
+            MissionTrigger missionTrigger = other.GetComponent<MissionTrigger>();
             if (missionTrigger != null)
             {
                 currentMissionText = missionTrigger.missionDescription;
@@ -23,13 +35,13 @@ public class MissionDisplay : MonoBehaviour
         }
     }
 
-    // Detect when the player leaves the collider
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Mission"))
         {
             isNearMissionTrigger = false;
-            missionBox.SetActive(false);   // Hide the mission box when not in range
+            crosshair.sprite = defaultCrosshair; // Reset to default crosshair when leaving mission object
+            missionBox.SetActive(false);         // Hide mission box when out of range
         }
     }
 
@@ -38,7 +50,7 @@ public class MissionDisplay : MonoBehaviour
         // Display mission text if near a mission trigger and 'E' is pressed
         if (isNearMissionTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            missionBox.SetActive(true);    // Show the mission box
+            missionBox.SetActive(true);         // Show the mission box
             missionText.text = currentMissionText;
         }
     }
