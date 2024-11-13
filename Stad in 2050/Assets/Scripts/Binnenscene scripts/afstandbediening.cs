@@ -9,6 +9,7 @@ public class afstandbediening : MonoBehaviour
     public tv tv;
     public VideoPlayer videoPlayer;
     public AudioClip tvgeluid;
+    public AudioClip televisie;
 
     void Start()
     {
@@ -21,5 +22,6 @@ public class afstandbediening : MonoBehaviour
     {
         videoPlayer.Play();
         audio.PlayOneShot(tvgeluid);
+        audio.PlayOneShot(televisie);
     }
 }
