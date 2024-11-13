@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Boven 2.unity
     guid: e1e95a121fd3d4c52939a560450293f5
   - enabled: 1
+    path: Assets/Scenes/Terrain2.unity
+    guid: 8bff042f4f59a418baf2ae6b13dda999
+  - enabled: 1
     path: Assets/Scenes/Terrain1.unity
     guid: 2ee03f248d8af4418b89fe139cd01c14
   m_configObjects: {}
