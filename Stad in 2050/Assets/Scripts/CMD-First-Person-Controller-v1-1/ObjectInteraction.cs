@@ -1,27 +1,34 @@
-/* 
- * OBJECT INTERACTION
- * Attach this to every object that needs to be interactible.
- * Here you can define:
- * - What is the object's name (used only for debugging)
- * - What is its icon (used as a crosshair)
- * - What function should it run upon interaction (make a separate script with a public function
- *   and connect it here)
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour
 {
     public string objectName;
     public Sprite cursor;
     public UnityEvent interactFunction;
+    public Speler speler; // Ensure this is assigned in the Inspector or via code
 
-    public void OnInteract() {
-      Debug.Log("Interacted with " + objectName);
-      if (interactFunction != null)
-        interactFunction.Invoke();
+    public void OnInteract()
+    {
+        Debug.Log("Interacted with " + objectName);
+
+        if (interactFunction != null)
+        {
+            interactFunction.Invoke();
+        }
+
+        // Ensure speler is not null before changing its state
+        if (speler != null)
+        {
+            speler.hasKey = true;
+            Debug.Log("Speler hasKey set to true");
+        }
+        else
+        {
+            Debug.LogError("Speler reference is missing!");
+        }
     }
 }
