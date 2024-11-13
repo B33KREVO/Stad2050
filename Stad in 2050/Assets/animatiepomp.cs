@@ -7,6 +7,7 @@ public class animatiepomp : MonoBehaviour
     Animator animator;
     public Animator bootAnimator;
     public doekweg doekje; // Verwijzing naar doekweg
+    public int aantalPompjes = 0;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class animatiepomp : MonoBehaviour
         if (doekje.doekIsWeg == true) {
             animator.SetTrigger("pomp1");
             bootAnimator.SetTrigger("lucht");
+            aantalPompjes++;
         } else {
             Debug.Log("kut is false"); 
         }
