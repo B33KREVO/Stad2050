@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class voordeur : MonoBehaviour
 {   
-    void OnTriggerEnter() {
+    public void open() {
         SceneManager.LoadScene("Binnen", LoadSceneMode.Single);
     }
 }
