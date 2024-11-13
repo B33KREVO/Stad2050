@@ -423,7 +423,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.8385806, b: 0.61957103, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 15
   m_SpotAngle: 71
   m_InnerSpotAngle: 21.80208
@@ -6702,7 +6702,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.8385806, b: 0.61957103, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 15
   m_SpotAngle: 71
   m_InnerSpotAngle: 21.80208
@@ -6880,7 +6880,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.8385806, b: 0.61957103, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 15
   m_SpotAngle: 71
   m_InnerSpotAngle: 21.80208
@@ -7085,7 +7085,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.8584906, g: 0.8385806, b: 0.61957103, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 15
   m_SpotAngle: 71
   m_InnerSpotAngle: 21.80208
@@ -9535,7 +9535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 2
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
