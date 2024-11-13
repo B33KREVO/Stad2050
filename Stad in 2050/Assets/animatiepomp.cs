@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class animatiepomp : MonoBehaviour
 {
+    AudioSource audio;
+    public AudioClip opblazen;
     Animator animator;
     public Animator bootAnimator;
+    
     public doekweg doekje; // Verwijzing naar doekweg
-    public int aantalPompjes = 0;
+    public bool aantalPompjes = false;
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -19,7 +23,8 @@ public class animatiepomp : MonoBehaviour
         if (doekje.doekIsWeg == true) {
             animator.SetTrigger("pomp1");
             bootAnimator.SetTrigger("lucht");
-            aantalPompjes++;
+            audio.PlayOneShot(opblazen);
+            aantalPompjes = true;
         } else {
             Debug.Log("kut is false"); 
         }
