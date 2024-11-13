@@ -15,8 +15,7 @@ public class escape : MonoBehaviour
     // Update is called once per frame
     public void Ontsnap() 
     {
-        if (pomp.aantalPompjes >= 3) 
-        {
+        if (pomp.aantalPompjes) {
             textescape.gameObject.SetActive(true);  // Set the text escape UI element active
         }
     }
