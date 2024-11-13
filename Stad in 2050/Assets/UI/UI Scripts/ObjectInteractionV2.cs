@@ -76,28 +76,32 @@ public class ObjectInteractionV2 : MonoBehaviour
             return;
         }
 
-        // Check if there's enough weight capacity to pick up the item
+        // Check if adding the item would exceed the max weight
         if (currentWeight + itemData.weight > maxWeight)
         {
             ShowFullInventoryImageTemporarily();
-            DisplayPickupMessage("Inventory is too heavy!");
-
-            // Exit the method early without adding the item to the inventory or disabling it
-            return;
+            return;  // Exit the method early without removing the object from the scene
         }
 
-        // Add item to inventory, update weight, and disable the object
+        // Check if the inventory is full
+        if (inventory.Count >= hotbarSlots.Length)
+        {
+            ShowFullInventoryImageTemporarily();
+            return;  // Exit the method early without removing the object from the scene
+        }
+
+        // If we pass the checks, add the item to inventory and update state
         inventory.Add(obj);
         currentWeight += itemData.weight;
-        obj.SetActive(false);
+        obj.SetActive(false);  // Deactivate the item in the scene as it is now in the inventory
 
         UpdateHotbarUI();
         UpdateInventoryStatusImage();
         SelectItem(inventory.Count - 1);
 
-        // Display item-specific pickup message if it exists
         DisplayPickupMessage(itemData.pickupMessage);
     }
+
 
     void DropSelectedItem()
     {
