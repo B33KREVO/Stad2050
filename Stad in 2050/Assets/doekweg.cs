@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class doekweg : MonoBehaviour
 {
+    public animatiepomp animatiePompScript;
+    public bool doekIsWeg = false; // Zorg dat doekIsWeg hier gedefinieerd is
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,5 +15,6 @@ public class doekweg : MonoBehaviour
 
     public void doekGone() {
         gameObject.SetActive(false);
+        doekIsWeg = true; // Zet doekIsWeg op true
     }
 }
