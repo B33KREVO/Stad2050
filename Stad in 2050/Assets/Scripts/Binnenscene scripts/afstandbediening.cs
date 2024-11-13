@@ -34,5 +34,13 @@ public class afstandbediening : MonoBehaviour
         text.enabled = true;
         news.text = "BREAKING NEWS: The small town of Doeveren is being flooded. If you live there make sure to gather essentials and evacuate to a safe environment!";
         news.enabled = true;
+
+        StartCoroutine(TextFade());
+    }
+
+    IEnumerator TextFade()
+    {
+        yield return new WaitForSeconds(8);
+        news.enabled = false;
     }
 }
