@@ -11,6 +11,7 @@ public class animatiepomp : MonoBehaviour
     
     public doekweg doekje; // Verwijzing naar doekweg
     public bool aantalPompjes = false;
+        public Speler speler;
 
     void Start()
     {
