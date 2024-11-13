@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class voetstappenbinnen : MonoBehaviour
+public class voetstappenbuiten : MonoBehaviour
 {
     public AudioSource voetstapAudio; // Voeg een AudioSource toe
 
