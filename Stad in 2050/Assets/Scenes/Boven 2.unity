@@ -2264,7 +2264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseCursor: {fileID: 536986918}
   interactKey: 101
-  maxInteractionDistance: 2
+  maxInteractionDistance: 4
 --- !u!1001 &289139879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3795,6 +3795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suitcase_01_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 108006, guid: cc206acf3c629e549a79e89b26695245, type: 3}
+      propertyPath: m_TagString
+      value: Pickable
+      objectReference: {fileID: 0}
     - target: {fileID: 415934, guid: cc206acf3c629e549a79e89b26695245, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2551
@@ -3850,7 +3854,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 108006, guid: cc206acf3c629e549a79e89b26695245, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878734649}
+    - targetCorrespondingSourceObject: {fileID: 108006, guid: cc206acf3c629e549a79e89b26695245, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878734648}
+    - targetCorrespondingSourceObject: {fileID: 108006, guid: cc206acf3c629e549a79e89b26695245, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878734654}
   m_SourcePrefab: {fileID: 100100000, guid: cc206acf3c629e549a79e89b26695245, type: 3}
 --- !u!1001 &695579170
 PrefabInstance:
@@ -5601,7 +5614,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168860530}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5614,7 +5627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6b25378700b1ce943a00256d4493636b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5743,6 +5756,8 @@ GameObject:
   - component: {fileID: 1239580774}
   - component: {fileID: 1239580778}
   - component: {fileID: 1239580777}
+  - component: {fileID: 1239580780}
+  - component: {fileID: 1239580779}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -6011,6 +6026,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voetstapAudio: {fileID: 1239580777}
+--- !u!114 &1239580779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239580769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f87642dcf7b4d3a85b659b3875fede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasKey: 0
+--- !u!114 &1239580780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239580769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf570d135f343dd4db7c7c78b957b005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 5
+  hotbarSlots:
+  - {fileID: 699986138}
+  - {fileID: 699986138}
+  - {fileID: 699986138}
+  inventoryStatusImage: {fileID: 0}
+  emptyInventoryImage: {fileID: 0}
+  oneItemImage: {fileID: 0}
+  twoItemsImage: {fileID: 0}
+  threeItemsImage: {fileID: 0}
+  fullInventoryImage: {fileID: 0}
+  crosshairImage: {fileID: 536986919}
+  defaultCrosshair: {fileID: 21300000, guid: f59ef0b8170274a4682fb84713f05304, type: 3}
+  hoverCrosshair: {fileID: 21300000, guid: fbd359c083e9701489cb69eda310ce11, type: 3}
+  pickupMessageText: {fileID: 0}
+  messageDisplayDuration: 2
+  pickupMessageBackground: {fileID: 0}
 --- !u!1001 &1250076675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7107,7 +7164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482146930}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7120,7 +7177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 507ea5da3b1d31a44b15d0460d6110c8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7976,6 +8033,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf8363b0ff810d34eb188506e160156d, type: 3}
+--- !u!1 &1878734647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 108006, guid: cc206acf3c629e549a79e89b26695245, type: 3}
+  m_PrefabInstance: {fileID: 652237994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1878734648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878734647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e34d739c4fbc646b50ea568f508cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  cursor: {fileID: 21300000, guid: fbd359c083e9701489cb69eda310ce11, type: 3}
+  interactFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1878734649}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  speler: {fileID: 1239580779}
+--- !u!114 &1878734649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878734647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5a0e92bb952994b841d52cf16e89a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 3e4c70f9c6d81a543a7db42c5c7e8ceb, type: 3}
+  weight: 1
+  pickupMessage: 
+--- !u!65 &1878734654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878734647}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.73762614, y: 1.2715981, z: 0.39999992}
+  m_Center: {x: 0.027848236, y: 0.08364341, z: 0}
 --- !u!1001 &1891576799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8117,7 +8245,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -232.9, y: 137.1}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 340, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904655486
 MonoBehaviour:
@@ -8126,7 +8254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904655484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -8139,7 +8267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turn on the tv
+  m_text: Get your suitcase and escape through the window
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -8794,6 +8922,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  speler: {fileID: 0}
 --- !u!114 &1992990384
 MonoBehaviour:
   m_ObjectHideFlags: 0
