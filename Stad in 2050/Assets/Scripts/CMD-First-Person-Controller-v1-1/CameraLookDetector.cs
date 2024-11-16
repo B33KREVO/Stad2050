@@ -17,7 +17,7 @@ public class CameraLookDetector : MonoBehaviour
 
     public KeyCode interactKey = KeyCode.E;
 
-    public float maxInteractionDistance = 2.0f;
+    public float maxInteractionDistance = 3.0f;
 
     ObjectInteraction currentLookTarget;
     void Start()
